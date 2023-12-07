@@ -1,0 +1,36 @@
+{
+  "name": "lunarjs",
+  "version": "1.0.0",
+  "description": "阳历与阴历转换库",
+  "keywords": ["阳历", "阴历", "公历", "农历"],
+  "type": "module",
+  "files": [
+    "lib"
+  ],
+  "main": "./lib/lunarjs.umd.cjs",
+  "module": "./lib/lunarjs.js",
+  "exports": {
+    ".": {
+      "require": "./lib/lunarjs.umd.cjs",
+      "import": "./lib/lunarjs.js"
+    }
+  },
+  "scripts": {
+    "test": "node ./example/index.js",
+    "transform": "node ./transform/index.js",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tenadolanter/lunarjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tenadolanter/lunarjs/issues"
+  },
+  "homepage": "https://github.com/tenadolanter/lunarjs#readme",
+  "devDependencies": {
+    "vite": "^5.0.6"
+  }
+}
