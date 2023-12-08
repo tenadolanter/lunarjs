@@ -1,8 +1,13 @@
 {
   "name": "lunarjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "阳历与阴历转换库",
-  "keywords": ["阳历", "阴历", "公历", "农历"],
+  "keywords": [
+    "阳历",
+    "阴历",
+    "公历",
+    "农历"
+  ],
   "type": "module",
   "files": [
     "lib"
