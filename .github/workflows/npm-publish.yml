@@ -31,6 +31,7 @@ jobs:
       - run: git config --local user.email "action@github.com"
       - run: git config --local user.name "GitHub Action"
       - run: git checkout $CI_COMMIT_REF_NAME
+      - run: npm login
       - run: npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
       - run: npm config set scope "@tenado"
       - run: npm config list
