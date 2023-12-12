@@ -34,7 +34,7 @@ jobs:
           npm config list
           SPACE_CHAR=" "
           npx standard-version --releaseCommitMessageFormat "chore(release):${SPACE_CHAR}{{currentTag}}"
-      - run: git push --follow-tags origin $CI_COMMIT_REF_NAME
-      - run: npm publish --access public
+          git push --follow-tags origin $CI_COMMIT_REF_NAME
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_NODE_AUTH_TOKEN}}
