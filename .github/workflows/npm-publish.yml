@@ -1,4 +1,4 @@
-name: 发布npm包
+name:  Node.js Package
 
 on:
   push:
@@ -29,12 +29,13 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git checkout $CI_COMMIT_REF_NAME
-          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-          npm config set scope "@tenado"
-          npm config list
           SPACE_CHAR=" "
           npx standard-version --releaseCommitMessageFormat "chore(release):${SPACE_CHAR}{{currentTag}}"
           git push --follow-tags origin $CI_COMMIT_REF_NAME
+      - run: |
+          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+          npm config set scope "@tenado"
+          npm config list
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_NODE_AUTH_TOKEN}}
