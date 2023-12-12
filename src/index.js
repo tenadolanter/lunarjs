@@ -155,12 +155,12 @@ export const solar2lunar = (year, month, day) => {
  * @example lunar2solar(1905, 1, 1, false)
  */
 export const lunar2solar = (year, month, day, isLeap) => {
-  y = parseInt(year);
-  m = parseInt(month);
-  d = parseInt(day);
+  let y = parseInt(year);
+  let m = parseInt(month);
+  let d = parseInt(day);
   isLeap = !!isLeap;
-  const leapMonth = leapMonth(y);
-  if (isLeap && leapMonth !== m) {
+  const _leapMonth = leapMonth(y);
+  if (isLeap && _leapMonth !== m) {
     return -1;
   } //传参要求计算该闰月公历 但该年得出的闰月与传参的月份并不同
   if (
