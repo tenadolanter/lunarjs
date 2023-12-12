@@ -1,6 +1,6 @@
 ## 介绍
 
-js工具库，处理阳历与阴历相互转换，获取指定日期的农历、节日，星座、生肖等信息。
+js工具库，处理阳历与阴历相互转换，获取指定日期的农历、节日，星座、生肖等信息。本文很多部分使用了[https://github.com/jjonline/calendar.js](https://github.com/jjonline/calendar.js)的代码，感谢作者。
 
 ## 使用
 
