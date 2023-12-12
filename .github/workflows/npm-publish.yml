@@ -6,19 +6,8 @@ on:
       - main
 
 jobs:
-  build:
-    if: "!contains(github.event.head_commit.message, 'release')"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: npm install
-      - run: npm run build
-
   publish-npm:
-    needs: build
+    if: "!contains(github.event.head_commit.message, 'release')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -33,6 +22,8 @@ jobs:
           npx standard-version --releaseCommitMessageFormat "chore(release):${SPACE_CHAR}{{currentTag}}"
           git push --follow-tags origin $CI_COMMIT_REF_NAME
       - run: |
+          npm install
+          npm run build
           npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
           npm config set scope "@tenado"
           npm config list
