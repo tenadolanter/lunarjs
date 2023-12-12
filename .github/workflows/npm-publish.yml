@@ -1,7 +1,4 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
-name: npm Package
+name: 发布npm包
 
 on:
   push:
@@ -9,35 +6,24 @@ on:
       - main
 
 jobs:
-  build:
+  auto_release_npm_package:
     if: "!contains(github.event.head_commit.message, 'release')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: 18
-      - run: npm ci
-      - run: npm run build
-
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org/
-      - run: git config --local user.email "action@github.com"
-      - run: git config --local user.name "GitHub Action"
-      - run: git checkout $CI_COMMIT_REF_NAME
-      - run: npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-      - run: npm config set scope "@tenado"
-      - run: npm config list
-      - run: SPACE_CHAR=" "
-      - run: npx standard-version --releaseCommitMessageFormat "chore(release):${SPACE_CHAR}{{currentTag}}"
-      - run: git push --follow-tags origin $CI_COMMIT_REF_NAME
-      - run: npm publish --access public
+          node-version: 12
+      - run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git checkout $CI_COMMIT_REF_NAME
+          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+          npm config set scope "@tenado"
+          npm config list
+          SPACE_CHAR=" "
+          npx standard-version --releaseCommitMessageFormat "chore(release):${SPACE_CHAR}{{currentTag}}"
+          git push --follow-tags origin $CI_COMMIT_REF_NAME
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_NODE_AUTH_TOKEN}}
