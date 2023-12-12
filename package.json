@@ -1,7 +1,7 @@
 {
   "name": "@tenado/lunarjs",
-  "version": "1.0.8",
-  "description": "阳历与阴历转换库",
+  "version": "1.0.9",
+  "description": "js工具库，处理阳历与阴历相互转换，获取指定日期的农历、节日，星座、生肖等信息",
   "keywords": [
     "阳历",
     "阴历",
