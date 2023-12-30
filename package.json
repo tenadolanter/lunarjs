@@ -6,7 +6,10 @@
     "阳历",
     "阴历",
     "公历",
-    "农历"
+    "农历",
+    "lunar",
+    "calendar",
+    "solar"
   ],
   "type": "module",
   "files": [
