@@ -211,3 +211,8 @@ export const lunar2solar = (year, month, day, isLeap) => {
 
   return solar2lunar(cY, cM, cD);
 };
+
+export default {
+  solar2lunar,
+  lunar2solar,
+}
